@@ -28,8 +28,20 @@ const removeActive = () => {
   lsnBtn.forEach((btn) => btn.classList.remove("active"));
 };
 
+//Spinner show
+const manageSpinner = (status) => {
+  if (status == true) {
+    document.getElementById("spinner-div").classList.remove("hidden");
+    document.getElementById("vocabulary-container").classList.add("hidden");
+  } else {
+    document.getElementById("spinner-div").classList.add("hidden");
+    document.getElementById("vocabulary-container").classList.remove("hidden");
+  }
+};
+
 // Add word cards
 const getLessonId = (id) => {
+  manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -59,6 +71,7 @@ const displayVocabularyById = (words) => {
         </p>
     `;
     wordContainer.append(wordCard);
+    manageSpinner(false);
     return;
   }
   words.forEach((word) => {
@@ -90,6 +103,7 @@ const displayVocabularyById = (words) => {
     `;
     wordContainer.append(wordCard);
   });
+  manageSpinner(false);
 };
 
 //Word details
