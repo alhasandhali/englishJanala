@@ -116,11 +116,11 @@ Prediction: For x = 6.0, predicted y = 5.8000
 
 ## 👩‍💻 **Contributors**
 
-- **#sushmita** – Base implementation  
-- **#anika** – Design matrix construction  
-- **#jarin** – LU decomposition solution  
-- **#sadia** – Least Squares solution  
-- **#ananna** – Output formatting  
-- **#anik** – Prediction feature  
+- **Sushmita** – Base implementation  
+- **Anika** – Design matrix construction  
+- **Jarin** – LU decomposition solution  
+- **Sadia** – Least Squares solution  
+- **Ananna** – Output formatting  
+- **Anik** – Prediction feature  
 
 
