@@ -5,9 +5,10 @@ This Python script performs **simple linear regression** using two different met
 2. **Standard Least Squares** (using `numpy.linalg.lstsq`)  
 
 It fits a line of the form:  
-\[
+$$
 y = \text{Intercept} + \text{Slope} \cdot x
-\]  
+$$
+ 
 to user-provided data points and allows prediction for a new `x` value.
 
 ---
