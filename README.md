@@ -1,116 +1,103 @@
-# ENGLISH <img width="25px" src="./assets/logo.png" /> JANALA
+import pypandoc
 
----
+text = """📈 Linear Regression with LU Decomposition & Least Squares
 
-## ⚡ API Endpoints
+This project demonstrates simple linear regression using two approaches:
 
-1. Get ⚡ All Levels
+LU Decomposition (scipy.linalg.lu_factor, lu_solve)
 
-```bash
-https://openapi.programming-hero.com/api/levels/all
-```
+Standard Least Squares (numpy.linalg.lstsq)
 
-1. Get ⚡ Words by Levels <br/>
-   https:// openapi.programming-hero.com/api/level/{id}
+The code calculates the intercept and slope of the best-fit line given input data, then allows prediction for a new x value.
 
-```bash
-https://openapi.programming-hero.com/api/level/5
-```
+🚀 Features
 
-1. Get ⚡ Words Detail <br/>
-   https:// openapi.programming-hero.com/api/word/{id}
+Accepts x and y values from user input.
 
-```bash
-https://openapi.programming-hero.com/api/word/5
-```
+Constructs the design matrix for regression.
 
-1. Get ⚡ All Words <br/>
+Solves for parameters using:
 
-```bash
-https://openapi.programming-hero.com/api/words/all
-```
+LU Decomposition
 
-# Work To do
+Least Squares Method
 
-### 1. Show Levels on The UI
+Prints regression equations for both methods.
 
-- [ ] Show a center-aligned heading as Figma
+Predicts the output (y) for a new input value of x.
 
----
+🛠️ Requirements
 
-- [ ] Create dynamically generated buttons from **API-01** for each lesson
-- [ ] Lesson Buttons will be displayed on page load
+Make sure you have the following installed:
 
----
+pip install numpy scipy
 
-### 2. Show Word Cards Based on Level
+📂 Code Overview
 
-- [ ] Show a default text that will be displayed in the Vocabulary section initially
-- [ ] on Clicking a Specific Lesson Button Load All the words from **API-02**
-- [ ] Display all words for a selected lesson in a card format, showing:
+Input: User enters x and y values (space-separated).
 
-  - [ ] Word
-  - [ ] Word meaning & pronunciation
-  - [ ] Two buttons with relevant icons as per Figma
+Design Matrix: A column of ones is added for the intercept.
 
-- [ ] Show **\*No Word Found** message if no words exist for a lesson
+Solving:
 
----
+LU Decomposition via lu_factor, lu_solve
 
-- [ ] Create functionality to highlight the active lesson button
+Least Squares via np.linalg.lstsq
 
----
+Output: Intercept, slope, regression equation, and prediction.
 
-### 3. Use Different Color on The Active Level Button
+▶️ Usage
 
-- [ ] After Successfully Loading words of a level , diffirentiate the button so user can understand which button is active
+Run the script:
 
-### 4. Vocabulary Details
+python regression.py
 
-- [ ] Create functionality to open a modal when clicking the details icon
-- [ ] Data will be load from **API-03**
-- [ ] modal will displays:
-  - [ ] Word with pronunciation
-  - [ ] Example sentence
-  - [ ] Synonyms
-  - [ ] A "Complete Learning" button to close the modal
+Example Run
+Enter x values separated by space: 1 2 3 4 5
+Enter y values separated by space: 2 4 5 4 5
 
-### 5. Handling Invalid Data
+Using LU Decomposition:
+  Intercept = 2.2000
+  Slope     = 0.6000
+  Equation  : y = 2.20 + 0.60x
 
-- [ ] avoid displaying falsy values like `undefined` or `null`
-- [ ] display relevant words if no data is found
+Using Standard Least Squares:
+  Intercept = 2.2000
+  Slope     = 0.6000
+  Equation  : y = 2.20 + 0.60x
 
-### 6. Loading Spinner
+Enter a new x value for prediction: 6
+Prediction: For x = 6.0, predicted y = 5.8000
 
-- [ ] Create a loading spinner that will be display when vocabulary is loading from API
+📊 Mathematical Background
 
-### 7. Implement Search Functionality
+The regression line is found by solving:
 
-- [ ] Take a input Box.
-- [ ] on Changing value It will Search word and show in the UI.
-- [ ] If anyone Do search reset active button
+θ=(XᵀX)⁻¹Xᵀy
 
-### 8. Save Word Feature
+where:
 
-- [ ] in the UI of Card add a button `Heart icon`
-- [ ] on Clicking it. Store the Word in the Saved Box
-- [ ] Show Saved words in a Different Section.
+θ=[intercept,slope]ᵀ
 
-### 9. Speak your Vocabularies
+LU decomposition factorizes A=LU and solves efficiently.
 
-- [ ] Create functionality for voice pronunciation of vocabulary words
-- [ ] Use below function and implement on clicking sound icon
+Least Squares directly minimizes the sum of squared errors.
 
-```js
-function pronounceWord(word) {
-  const utterance = new SpeechSynthesisUtterance(word);
-  utterance.lang = "en-EN"; // English
-  window.speechSynthesis.speak(utterance);
-}
-```
+👩‍💻 Authors (Team Credits)
 
-For More >> you can explore this implementation 👉 [https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ](https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ)
+Sushmita – Project setup
 
----
-Bonus : How to create Private Repository for next assignments
-## Test Repo - :  https://classroom.github.com/a/Fgjib-lr
+Anika – Design matrix construction
+
+Jarin – LU Decomposition solution
+
+Sadia – Least Squares solution
+
+Ananna – Results & output formatting
+
+Anik – Prediction function
+"""
+
+output_path = "/mnt/data/README.md"
+pypandoc.convert_text(text, 'md', format='md', outputfile=output_path, extra_args=['--standalone'])
+output_path
